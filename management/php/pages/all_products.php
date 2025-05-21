@@ -34,7 +34,7 @@ require("../db.php");
 <td>" . $aa['product_quantity'] . "</td>
 <td>" . $aa['product_amount'] . "</td>
 <td><i class='fa-solid fa-pen-to-square text-primary pro_edit_btn' id='" . $aa['id'] . "'></i></td>
-<td><i class='fa-solid fa-trash text-danger'></i></td>
+<td><i class='fa-solid fa-trash text-danger pro_delete_btn' id='" . $aa['id'] . "'></i></td>
 </tr>";
                     }
                     ?>
@@ -123,22 +123,45 @@ require("../db.php");
                 processData: false,
                 contentType: false,
                 success: function (response) {
-                    if(response== "Success"){
+                    if (response == "Success") {
                         myModal.hide()
                         let div = document.createElement("DIV");
-                            $(div).addClass("alert alert-primary fs-1 text-center p-5");
-                            $(div).html('<i class="display-1 fa-solid fa-circle-check"></i><br>Product Update Successfull');
-                            $(".msg").html(div);
-                            $(".msg").removeClass("d-none")
-                            setTimeout(() => {
-                                $(".msg").addClass("d-none")
-                                $("[p_link='all_products']").click()
-                            }, 2500);
-                    }else{
+                        $(div).addClass("alert alert-primary fs-1 text-center p-5");
+                        $(div).html('<i class="display-1 fa-solid fa-circle-check"></i><br>Product Update Successfull');
+                        $(".msg").html(div);
+                        $(".msg").removeClass("d-none")
+                        setTimeout(() => {
+                            $(".msg").addClass("d-none")
+                            $("[p_link='all_products']").click()
+                        }, 2500);
+                    } else {
 
                     }
                 }
             });
         })
+
+        $(".pro_delete_btn").on("click", function () {
+            if (!confirm("Are you sure you want to delete this product?")) return;
+
+            let id = $(this).attr('id');
+
+            $.ajax({
+                type: "POST",
+                url: "php/delete_products.php",
+                data: {
+                    action: "delete_product",
+                    id: id
+                },
+                success: function (response) {
+                    alert(response); // optionally display response
+                    location.reload(); // reload page to reflect changes
+                },
+                error: function () {
+                    alert("An error occurred while deleting the product.");
+                }
+            });
+        });
+
     })
 </script>
