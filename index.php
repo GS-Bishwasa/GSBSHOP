@@ -36,63 +36,64 @@ require "php/db.php";
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">GSB SHOP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item me-4">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <?php
-                    $cat_data_sql = $db->query("SELECT * FROM category");
-                    while ($cat_data = $cat_data_sql->fetch_array()) {
-                        echo ' <li class="nav-item me-4">
-                        <a class="nav-link" href="#">' . $cat_data['category_name'] . '</a>
-                    </li>';
-                    }
-                    ?>
-                    <li class="nav-item me-4">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item me-4">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">GSB SHOP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- Image Carousel -->
-    <div id="carouselExampleFade" class="carousel slide carousel-fade ">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/banner1.jpeg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/banner2.webp" class="d-block w-100" alt="...">
-            </div>
-            <!-- <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div> -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item me-4">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <?php
+        $cat_data_sql = $db->query("SELECT * FROM category");
+        while ($cat_data = $cat_data_sql->fetch_array()) {
+            echo '<li class="nav-item me-4">
+                    <a class="nav-link" href="#">' . htmlspecialchars($cat_data['category_name']) . '</a>
+                  </li>';
+        }
+        ?>
+
+        <li class="nav-item me-4">
+            <a class="nav-link" href="#">About Us</a>
+        </li>
+        <li class="nav-item me-4">
+            <a class="nav-link" href="#">Contact Us</a>
+        </li>
+    </ul>
+</div>
+
     </div>
+</nav>
+
+
+   <!-- Image Carousel -->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="images/banner3.png" class="d-block w-100" alt="Banner 3" style="height: 500px; ">
+        </div>
+        <div class="carousel-item">
+            <img src="images/banner4.png" class="d-block w-100" alt="Banner 4" style="height: 500px; ">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-black rounded" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-black rounded" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
 
     <div class="container">
         <?php
