@@ -155,7 +155,8 @@ require("../db.php");
                 },
                 success: function (response) {
                     alert(response); // optionally display response
-                    location.reload(); // reload page to reflect changes
+                    // location.reload(); // reload page to reflect changes
+                    $("[p_link='all_products']").click()
                 },
                 error: function () {
                     alert("An error occurred while deleting the product.");
