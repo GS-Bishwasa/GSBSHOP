@@ -62,6 +62,11 @@ require "php/db.php";
 
 
   <style>
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background-color: #f9f9f9;
+    }
+    
     .category-section h2 {
       position: relative;
       display: inline-block;
