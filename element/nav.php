@@ -13,21 +13,21 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
 
-                
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Categories
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                       <?php
-                $cat_data_sql = $db->query("SELECT * FROM category");
-                while ($cat_data = $cat_data_sql->fetch_array()) {
-                    echo '<li class="nav-item me-4">
+                        <?php
+                        $cat_data_sql = $db->query("SELECT * FROM category");
+                        while ($cat_data = $cat_data_sql->fetch_array()) {
+                            echo '<li class="nav-item me-4">
                     <a class="nav-link dropdwon-item" href="product.php?product_category=' . $cat_data['category_url'] . '">' . htmlspecialchars($cat_data['category_name']) . '</a>
                   </li>';
-                }
-                ?>
+                        }
+                        ?>
                     </ul>
                 </li>
                 <li class="nav-item me-4">
@@ -36,12 +36,28 @@
                 <li class="nav-item me-4">
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="#">Register</a>
-                </li>
+
+                <?php
+                if (empty($_COOKIE['_aut_ui'])) {
+                    echo '
+    <li class="nav-item me-4">
+        <a class="nav-link" href="login.php">Login</a>
+    </li>
+    <li class="nav-item me-4">
+        <a class="nav-link" href="register.php">Register</a>
+    </li>';
+                } else {
+                    echo '
+    <li class="nav-item me-4">
+        <a class="nav-link" href="order.php">My Order</a>
+    </li>
+    <li class="nav-item me-4">
+        <a class="nav-link" href="signout.php">Sign Out</a>
+    </li>';
+                }
+                ?>
+
+
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
