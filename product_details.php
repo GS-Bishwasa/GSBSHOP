@@ -91,8 +91,14 @@ require "php/db.php";
 
           <label class="fs-5 fw-semibold mb-2" for="productFeature">Product Feature</label>
           <p id="productFeature" class="mb-4"><?php echo nl2br(($aa['product_description'])); ?></p>
-
-          <button class="btn btn-primary w-50 align-self-start">Buy Now</button>
+<?php
+if (!empty($_COOKIE['_aut_ui'])) {
+  echo '<a href="order_details.php?p_id='.$pro_id.'"><button class="btn btn-primary w-50 align-self-start buy-btn">Buy Now</button></a>';
+}else{
+    echo '<a href="login.php"><button class="btn btn-primary w-50 align-self-start">Buy Now</button></a>';
+}
+?>
+          <!-- <button class="btn btn-primary w-50 align-self-start">Buy Now</button> -->
 
         </div>
       </div>
@@ -161,6 +167,10 @@ require "php/db.php";
   }
 
   magnify("productImage", 2); // You can change the zoom level here
+
+
+
+
 </script>
 
 
