@@ -5,10 +5,17 @@ require "db.php";
 $fullname = trim($_POST['fullname']);
 $mobile = trim($_POST['mobile']);
 $email = trim($_POST['email']);
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Better than md5
+$address = trim($_POST['address']);
+$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $cd = date("Y-m-d");
 
-// Check if 'register' table exists (more reliable method)
+// Validate email
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "invalid email";
+    exit;
+}
+
+// Check if 'register' table exists
 $tableExists = $db->query("SHOW TABLES LIKE 'register'");
 if ($tableExists->num_rows == 0) {
     $create_table = $db->query("CREATE TABLE register(
@@ -16,6 +23,7 @@ if ($tableExists->num_rows == 0) {
         fullname VARCHAR(225),
         mobile VARCHAR(100),
         email VARCHAR(200) UNIQUE,
+        address MEDIUMTEXT,
         password VARCHAR(255),
         date DATE,
         PRIMARY KEY(id)
@@ -37,8 +45,8 @@ if ($stmt->num_rows > 0) {
     echo "user already exists";
 } else {
     // Insert new user
-    $stmt = $db->prepare("INSERT INTO register (fullname, mobile, email, password, date) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $fullname, $mobile, $email, $password, $cd);
+    $stmt = $db->prepare("INSERT INTO register (fullname, mobile, email, address, password, date) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $fullname, $mobile, $email, $address, $password, $cd);
 
     if ($stmt->execute()) {
         echo "success";

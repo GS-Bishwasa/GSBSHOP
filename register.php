@@ -80,6 +80,11 @@
                             <label for="email" class="form-label">Email ID</label>
                             <input type="email" id="email" name="email" class="form-control" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <textarea name="address" class="form-control address" id="address" rows="3"
+                                placeholder="Enter your full address..." required></textarea>
+                        </div>
                         <div class="mb-4">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" id="password" name="password" class="form-control" required>
