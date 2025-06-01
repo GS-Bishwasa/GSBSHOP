@@ -49,7 +49,7 @@
                 } else {
                     echo '
     <li class="nav-item me-4">
-        <a class="nav-link" href="order.php">My Order</a>
+        <a class="nav-link" href="my_order.php">My Order</a>
     </li>
     <li class="nav-item me-4">
         <a class="nav-link" href="signout.php">Sign Out</a>
