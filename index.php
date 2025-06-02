@@ -146,7 +146,7 @@ require "php/db.php";
     while ($cat_data = $cat_data_sql->fetch_array()) {
       $cat = $cat_data['category_url'];
       $cat_name = htmlspecialchars($cat_data['category_name']);
-      $product_sql = $db->query("SELECT * FROM product WHERE category = '$cat'");
+      $product_sql = $db->query("SELECT * FROM product WHERE category = '$cat' ORDER BY id DESC LIMIT 4");
 
       echo '<div class="category-section mb-5">';
       echo '<h2>' . $cat_name . '</h2>';

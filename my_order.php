@@ -63,7 +63,7 @@ require "php/db.php";
             <div class="col-md-8">
                 <?php
                 $user_email = base64_decode($_COOKIE['_aut_ui']);
-                $get_data = $db->query("SELECT * FROM receive_order WHERE c_email = '$user_email' AND order_status = 'pending' ");
+                $get_data = $db->query("SELECT * FROM receive_order WHERE c_email = '$user_email' ORDER BY order_date DESC");
 
                 if ($get_data->num_rows > 0) {
                     while ($row = $get_data->fetch_assoc()) {
@@ -82,13 +82,16 @@ require "php/db.php";
                                     <p><span class="label">Payment Status:</span> 
                                         <span class="badge bg-' . ($row['payment_status'] == "completed" ? 'success' : 'warning') . ' badge-status">' . ucfirst($row['payment_status']) . '</span>
                                     </p>
+                                    <p><span class="label">Delivery Status:</span> 
+                                        <span class="badge bg-' . ($row['order_status'] == "delivered" ? 'success' : 'secondary') . ' badge-status">' . ucfirst($row['order_status']) . '</span>
+                                    </p>
                                     <p><span class="label">Order Date:</span> ' . $row['order_date'] . '</p>
                                 </div>
                             </div>
                         </div>';
                     }
                 } else {
-                    echo '<div class="alert alert-info text-center">No pending orders found.</div>';
+                    echo '<div class="alert alert-info text-center">No orders found.</div>';
                 }
                 ?>
             </div>

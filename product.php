@@ -122,7 +122,7 @@ require "php/db.php";
     $product_heading = str_replace("-"," ",$cat);
     $product_heading =  ucfirst($product_heading);
 
-    $product_sql = $db->query("SELECT * FROM product WHERE category = '$cat'");
+    $product_sql = $db->query("SELECT * FROM product WHERE category = '$cat' ORDER BY id DESC");
 
     echo '<div class="category-section mt-5 mb-5">';
     echo '<h2>' . $product_heading . '</h2>';
