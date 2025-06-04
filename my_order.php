@@ -97,6 +97,10 @@ require "php/db.php";
             </div>
         </div>
     </div>
+
+    <?php
+  require("element/footer.php");
+  ?>
 </body>
 
 </html>

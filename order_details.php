@@ -186,7 +186,9 @@ require "php/db.php";
 </script>
 
 
-
+<?php
+  require("element/footer.php");
+  ?>
 
 </body>
 

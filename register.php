@@ -146,6 +146,10 @@
         });
     </script>
 
+<?php
+  require("element/footer.php");
+  ?>
+
 </body>
 
 </html>

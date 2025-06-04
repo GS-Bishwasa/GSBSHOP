@@ -173,6 +173,9 @@ if (!empty($_COOKIE['_aut_ui'])) {
 
 </script>
 
+<?php
+  require("element/footer.php");
+  ?>
 
 </body>
 

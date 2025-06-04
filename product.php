@@ -160,6 +160,11 @@ require "php/db.php";
 
     ?>
     </div>
+
+<?php
+  require("element/footer.php");
+  ?>
+
 </body>
 
 </html>
