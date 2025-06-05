@@ -24,17 +24,17 @@
                         $cat_data_sql = $db->query("SELECT * FROM category");
                         while ($cat_data = $cat_data_sql->fetch_array()) {
                             echo '<li class="nav-item me-4">
-                    <a class="nav-link dropdwon-item" href="product.php?product_category=' . $cat_data['category_url'] . '">' . htmlspecialchars($cat_data['category_name']) . '</a>
+                    <a class="nav-link dropdwon-item" href="http://localhost/GSBSHOP/category/' . $cat_data['category_url'] . '">' . htmlspecialchars($cat_data['category_name']) . '</a>
                   </li>';
                         }
                         ?>
                     </ul>
                 </li>
                 <li class="nav-item me-4">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="about.php">About Us</a>
                 </li>
                 <li class="nav-item me-4">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="contact.php">Contact Us</a>
                 </li>
 
                 <?php
